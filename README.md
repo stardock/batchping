@@ -34,7 +34,41 @@ do
 done 
 ```  
 
+# Windows  
 
+## ICMP PING  
+
+```  
+echo                    ***** by hotsnow *****
+echo         ***** 欢迎讨论，建议，修改，谢谢使用！*****
+del /f ip_timeout.txt
+echo.
+echo ping start ...
+echo send 1 packets ,time out 1 second
+echo.
+for /f %%i in (ip.txt) do ping -n 1 -w 1000 %%i |find "out" >nul && echo %%i && echo %%i >>ip_timeout.txt
+echo 以上的 ip 不能 ping 通，列表保存在 ip_timeout.txt
+echo.
+echo === 需要查找资产信息请按任意键，结束请关闭窗口 ===
+pause
+```  
+
+## TCP Port Ping  
+
+```  
+echo                    ***** by hotsnow *****
+echo         ***** 欢迎讨论，建议，修改，谢谢使用！*****
+del /f ip_timeout.txt
+echo.
+echo ping start ...
+echo send 2 packets ,time out 1 second
+echo.
+for /f %%i in (ip.txt) do psping -n 1 -w 0 %%i 3389 2>nul |find "Received = 0" >nul && echo %%i && echo %%i >>ip_timeout.txt
+echo 以上的 ip 不能 ping 通，列表保存在 ip_timeout.txt
+echo.
+echo === 需要查找资产信息请按任意键，结束请关闭窗口 ===
+pause
+```  
 
 
 Windows ping ref: https://sites.google.com/site/laiweiwei/hotsnow/windows-bat/test-2  
